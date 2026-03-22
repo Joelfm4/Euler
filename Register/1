@@ -1,0 +1,11 @@
+
+
+
+squareNumbers :: Int -> [Int]
+squareNumbers 0 = []
+squareNumbers n = [x^2 | x <- [1..n]]
+
+
+sumSquareNumbers :: Int -> Int
+sumSquareNumbers 0 = 0
+sumSquareNumbers = sum [x^2 | x <- [1..n]]
