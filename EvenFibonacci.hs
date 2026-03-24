@@ -12,5 +12,4 @@ fibonacci n | even n         = f1 * (f1 + 2 * f2)
                      f2 = fibonacci (k-1)
 
 
--- sum (takeWhile (< 4000000) [y | x <- [0..], let y = fibonacci x, even(y)])
-
+-- Solution: sum (takeWhile (< 4000000) [y | x <- [0..], let y = fibonacci x, even(y)])
