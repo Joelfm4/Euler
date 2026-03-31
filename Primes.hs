@@ -24,8 +24,3 @@ getPrime :: Int -> Integer
 getPrime n = primes !! (n-1)
 
 
-
-
-
-
-
