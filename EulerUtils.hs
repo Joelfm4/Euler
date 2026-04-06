@@ -10,9 +10,6 @@ module EulerUtils
 ) where
 
 
--------------------------------------------------
---                 Numbers                     --
--------------------------------------------------
 
 numberOfDigits :: Int -> Int
 numberOfDigits n
@@ -30,19 +27,16 @@ takeDigits n d
     | d <= 0           = error "Digits must be positive"
     | d > totalDigits  = error "Requested digits exceed number length"
     | d == totalDigits = n
-    | otherwise        = numerator `div` denominator
+    | otherwise        = magnitude `div` scale
     
         where
 
-            denominator = 10 ^ exponent
-            exponent    = floor (logBase 10 (fromIntegral numerator)) + 1 - d
-            numerator   = abs (n)
-            totalDigits = numberOfDigits (abs(n))
+            scale       = 10 ^ exponent
+            exponent    = floor (logBase 10 (fromIntegral magnitude)) + 1 - d
+            totalDigits = numberOfDigits magnitude 
+            magnitude   = abs (n)
 
 
--------------------------------------------------
---                 Primes                      --
--------------------------------------------------
 
 -- Algorithm : Trial Division Primality Test
 isPrime :: Integer -> Bool
@@ -55,6 +49,7 @@ isPrime n | n <= 1 = False
                 where
 
                     q = floor . sqrt . fromIntegral
+
 
 
 -- Algorithm : Sieve of Eratosthenes
@@ -70,6 +65,7 @@ primesUpTo n = sieve [2..n]
             | otherwise = x : sieve [i | i <- xs, i `mod` x /= 0]
 
 
+
 -- Asymptotic expansion
 aproxPrimeSumUpTo :: Int -> Integer
 aproxPrimeSumUpTo n = p1 + p2
@@ -80,6 +76,7 @@ aproxPrimeSumUpTo n = p1 + p2
 
                         p1 = floor $ nd^2 / (2 * ln)
                         p2 = floor $ nd^2 / (4 * ln^2)
+
 
 
 -- Note: Zero-based index
@@ -95,7 +92,3 @@ primes = 2 : 3 : filter isPrime candidates
 sumUpTo :: Int -> Int 
 sumUpTo n = sum $ primesUpTo n
 
-
--------------------------------------------------
---                   Other                     --
--------------------------------------------------
