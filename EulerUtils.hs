@@ -11,7 +11,7 @@ module EulerUtils
 
 
 
-numberOfDigits :: Int -> Int
+numberOfDigits :: Integer -> Integer
 numberOfDigits n
     | n == 0    = 1
     | otherwise = logarithm + 1
@@ -22,7 +22,7 @@ numberOfDigits n
             
 
 
-takeDigits :: Int -> Int -> Int
+takeDigits :: Integer -> Integer -> Integer
 takeDigits n d
     | d <= 0           = error "Digits must be positive"
     | d > totalDigits  = error "Requested digits exceed number length"
